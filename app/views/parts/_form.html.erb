@@ -1,22 +1,28 @@
 <%= form_with(model: part, local: true) do |form| %>
-  <% if part.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(part.errors.count, "error") %> prohibited this part from being saved:</h2>
+<% if part.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(part.errors.count, "error") %> prohibited this part from being saved:</h2>
 
-      <ul>
-        <% part.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>
+    <% part.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<div class="field">
+  <%= form.label :part_ids %><br>
+  <label for="pasrt">Part name:</label>
+  <%= form.text_field :id_part %>
+  <%= form.collection_check_boxes(:car_ids, @cars, :id, :name) %>
+</div>
+
+
+
+
+<div class="actions">
+  <%= form.submit %>
+</div>
 <% end %>

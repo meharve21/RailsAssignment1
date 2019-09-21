@@ -12,13 +12,29 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label :make_id %>
+    <%= form.collection_select :make_id, Make.all, :id, :name %>
   </div>
 
+
+  <!-- 
+  
+    This is the line I added when the errors occured
+
+    Error:
+      Server not responding
+      I was trying to add a place to type in the cars name
+  
+    -->
+  <!--div class="field">
+      <%= form.label :car_id %>
+      <%= form.text_field :car_id %>
+  </div> -->
+ 
+
   <div class="field">
-    <%= form.label :make_id %>
-    <%= form.text_field :make_id %>
+    <%= form.label :part_id %><br>
+    <%= form.collection_check_boxes(:part_ids, @parts, :id, :name) %>
   </div>
 
   <div class="actions">
